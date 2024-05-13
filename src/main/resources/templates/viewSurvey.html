@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+<div class="container mt-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link " id="fill-tab" data-toggle="tab" href="#fill" role="tab" aria-controls="fill" aria-selected="true">Fill Survey</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link active" id="view-tab" data-toggle="tab" href="#view" role="tab" aria-controls="view" aria-selected="false">View Results</a>
+        </li>
+    </ul>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <h2 class="mb-4">Survey Results</h2>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Total number of surveys: </label>
+            <div id="totalSurveys">Loading...</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Average Age: </label>
+            <div class="col-md-6" id="avgAge">Loading...</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Oldest person who participated in survey: </label>
+            <div class="col-md-6" id="old">Loading...</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Youngest person who participated in survey</label>
+            <div class="col-md-6" id="young">Loading...</div>
+        </div>
+
+        <br>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Percentage of people who like Pizza: </label>
+            <div class="col-md-6" id="pizza">50%</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Percentage of people who like Pasta: </label>
+            <div class="col-md-6" id="pasta">100%</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">Percentage of people who like Pap and Wors: </label>
+            <div class="col-md-6" id="papandwors">75%</div>
+        </div>
+
+        <br>
+
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">People who like to watch movies: </label>
+            <div class="col-md-6" id="movies">2</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">People who like to listen to radio: </label>
+            <div class="col-md-6" id="radio">1</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">People who like to eat out: </label>
+            <div class="col-md-6" id="eatout">2</div>
+        </div>
+        <div class="d-flex align-items-center">
+            <label class="form-check-label mr-4">People who like to watch TV: </label>
+            <div class="col-md-6" id="tv">3</div>
+        </div>
+
+    </div>
+</div>
+
+<footer class="container mt-5">
+    <p>Find this project on <a href="https://github.com/example/project">GitHub</a>.</p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript to handle tab navigation
+    $(document).ready(function(){
+        $('#fill-tab').on('click', function(){
+            window.location.href = 'fillOutSurvey';
+        });
+
+        $('#view-tab').on('click', function(){
+            window.location.href = 'viewSurvey';
+        });
+
+
+    });
+</script>
+<script>
+    // Function to update the UI with survey data
+    function updateSurveys(totalSurveys) {
+        document.getElementById('totalSurveys').innerText = totalSurveys;
+    }
+     function updateAge(avgAge) {
+        document.getElementById('avgAge').innerText = avgAge;
+    }
+     function updateOld(oldestPerson) {
+        document.getElementById('old').innerText = oldestPerson;
+    }
+     function updateYoung(youngestPerson) {
+        document.getElementById('young').innerText = youngestPerson;
+    }
+
+    // Function to get total number of surveys from the backend
+    function getTotalNumberOfSurveys() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var totalSurveys = parseInt(xhr.responseText);
+                    updateSurveys(totalSurveys);
+                } else {
+                    console.error("Failed to get total number of surveys. Status code: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "/getTotalSurvey", true);
+        xhr.send();
+    }
+
+    // Function to get average age from the backend
+    function getAverageAge() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var avgAge = parseInt(xhr.responseText);
+                    updateAge(avgAge);
+                } else {
+                    console.error("Failed to get average age. Status code: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "/getAverageAge", true);
+        xhr.send();
+    }
+
+    // Function to get the oldest person from the backend
+    function getOldestPerson() {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    var oldestPerson = xhr.responseText;
+                    updateOld(oldestPerson);
+                } else {
+                    console.error("Failed to get the oldest person. Status code: " + xhr.status);
+                }
+            }
+        };
+
+        xhr.open("GET", "/getOldPerson", true);
+        xhr.send();
+    }
+
+    // Function to get youngest person from the backend
+function getYoungestPerson() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                var youngestPerson = xhr.responseText; // Parse as string
+                updateYoung(youngestPerson);
+            } else {
+                console.error("Failed to get youngest person. Status code: " + xhr.status);
+            }
+        }
+    };
+
+    xhr.open("GET", "/getYoungPerson", true);
+    xhr.send();
+}
+
+
+    // Call the functions to get survey data when needed
+    getTotalNumberOfSurveys();
+    getAverageAge();
+    getOldestPerson();
+    getYoungestPerson();
+</script>
+<script>
+    function getPercentagePizza(pizza) {
+    document.getElementById('pizza').innerText = pizza;
+    }
+    function getPercentagePasta(pasta) {
+    document.getElementById('pasta').innerText = pasta;
+    }
+    function getPercentagePapAndWors(papandwors) {
+    document.getElementById('papandwors').innerText = papandwors;
+    }
+
+    function getPizzaPercentage() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+    var pizza = parseInt(xhr.responseText);
+    getPercentagePizza(pizza);
+    } else {
+    console.error("Failed to get the oldest person. Status code: " + xhr.status);
+    }
+    }
+    };
+
+    xhr.open("GET", "/getPizzaPercentage", true);
+    xhr.send();
+    }
+
+
+    function getPastaPercentage() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+     var pasta = parseInt(xhr.responseText);
+    getPercentagePasta(pasta);
+    } else {
+    console.error("Failed to get youngest person. Status code: " + xhr.status);
+    }
+    }
+    };
+
+    xhr.open("GET", "/getPastaPercentage", true);
+    xhr.send();
+    }
+
+      function getPapAndWorsPercentage() {
+    var xhr = new XMLHttpRequest();
+
+    xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+    if (xhr.status === 200) {
+    var papandwors = parseDouble(xhr.responseText); // Parse as string
+    getPercentagePapAndWors(papandwors);
+    } else {
+    console.error("Failed to get youngest person. Status code: " + xhr.status);
+    }
+    }
+    };
+
+    xhr.open("GET", "/getPapAndWorsPercentage", true);
+    xhr.send();
+    }
+
+    getPizzaPercentage();
+    getPastaPercentage();
+
+</script>
+</body>
+</html>

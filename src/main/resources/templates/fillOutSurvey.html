@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiil Out Survey</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body class="bg-gray">
+<div class="container mt-5">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="fill-tab" data-toggle="tab" href="#fill" role="tab" aria-controls="fill" aria-selected="true">Fill Survey</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="view-tab" data-toggle="tab" href="#view" role="tab" aria-controls="view" aria-selected="false">View Results</a>
+        </li>
+    </ul>
+    <div class="shadow p-3 mb-5 bg-white rounded">
+        <h2 class="mb-4">Personal Details Form</h2>
+        <form id="surveyForm">
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Enter full name" name="fullName">
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+            </div>
+            <div class="form-group">
+                <label for="dateOfBirth">Date of Birth</label>
+                <input type="date" class="form-control" id="dateOfBirth" name="dateOfBirth">
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number</label>
+                <input type="text" class="form-control" id="contactNumber" placeholder="Enter contact number" name="contactNumber">
+            </div>
+
+            <br>
+            <div class="d-flex align-items-center">
+                <label class="form-check-label mr-4">What is your favorite food?</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="pizza">
+                    <label class="form-check-label" for="pizza">Pizza</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="pasta">
+                    <label class="form-check-label" for="pasta">Pasta</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="papandwors">
+                    <label class="form-check-label" for="papandwors">Pap and Wors</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="other">
+                    <label class="form-check-label" for="other">Other</label>
+                </div>
+            </div>
+            <br>
+
+            <div>
+                <label class="form-check-label mr-4">Please rate your level of agreement on scale from 1 to 5, with 1 being "strongly disagree" and 5 being "strongly agree".</label>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Strongly Agree</th>
+                        <th scope="col">Agree</th>
+                        <th scope="col">Neutral</th>
+                        <th scope="col">Disagree</th>
+                        <th scope="col">Strongly Disagree</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>I like to watch movies</td>
+                        <td class="text-center"><input type="radio"  name="movie" value="1" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="movie" value="2" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="movie" value="3" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="movie" value="4" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="movie" value="5" class="form-check-input"></td>
+                    </tr>
+                    <tr>
+                        <td>I like to listen to radio</td>
+                        <td class="text-center"><input type="radio"  name="radio" value="1" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="radio" value="2" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="radio" value="3" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="radio" value="4" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="radio" value="5" class="form-check-input"></td>
+                    </tr>
+                    <tr>
+                        <td>I like to eat out</td>
+                        <td class="text-center"><input type="radio"  name="eatout" value="5" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="eatout" value="4" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="eatout" value="3" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="eatout" value="2" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="eatout" value="1" class="form-check-input"></td>
+                    </tr>
+                    <tr>
+                        <td>I like to watch TV</td>
+                        <td class="text-center"><input type="radio"  name="tv" value="5" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="tv" value="4" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="tv" value="3" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="tv" value="2" class="form-check-input"></td>
+                        <td class="text-center"><input type="radio"  name="tv" value="1" class="form-check-input"></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    // JavaScript to handle tab navigation
+    $(document).ready(function(){
+        $('#fill-tab').on('click', function(){
+            window.location.href = 'fillOutSurvey';
+        });
+
+        $('#view-tab').on('click', function(){
+            window.location.href = 'viewSurvey';
+        });
+    });
+</script>
+<script>
+    document.getElementById("surveyForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        var formData = {
+            fullName: document.getElementById("fullName").value,
+            email: document.getElementById("email").value,
+            dateOfBirth: document.getElementById("dateOfBirth").value,
+            contactNumber: document.getElementById("contactNumber").value,
+            favoriteFood: getFavoriteFood(),
+            ratings: submitSurvey()
+        };
+
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/submitSurvey", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText); // Output response from the server
+                    alert(xhr.responseText); // Show a confirmation message
+                } else {
+                    console.error("There was a problem with the request:", xhr.status);
+                    alert("There was an error while submitting the survey.");
+                }
+            }
+        };
+
+        xhr.send(JSON.stringify(formData));
+    });
+
+    // Function to get the selected favorite food
+    function getFavoriteFood() {
+        var foodOptions = ["pizza", "pasta", "papandwors", "other"];
+        var favoriteFood = "";
+        foodOptions.forEach(function(option) {
+            if (document.getElementById(option).checked) {
+                favoriteFood += option + ",";
+            }
+        });
+        return favoriteFood.slice(0, -1); // Remove the trailing comma
+    }
+
+    // Function to get the ratings
+    function submitSurvey() {
+      var surveyData = {};
+      var statements = document.querySelectorAll('input[type="radio"]');
+
+      statements.forEach(function(radio) {
+        if (radio.checked) {
+          var name = radio.name;
+          var value = parseInt(radio.value);
+          surveyData[name] = value;
+        }
+      });
+
+      console.log(surveyData);
+      // Here you can proceed to send surveyData to the backend
+    }
+
+</script>
+</body>
+</html>
